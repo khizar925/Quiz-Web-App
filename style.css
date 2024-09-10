@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.element {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: lightblue;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.options ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.options li {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.options li:hover {
+    background-color: #f0f8ff;
+}
+
+.options input[type="radio"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.options label {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+button {
+    width: 100%;
+    max-width: 150px;
+    border-radius: 10px;
+    height: 40px;
+    background-color: lightgreen;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #32cd32;
+}
+
+@media (max-width: 768px) {
+    .element {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .options label {
+        font-size: 16px;
+    }
+
+    button {
+        height: 35px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .element {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .options label {
+        font-size: 14px;
+    }
+
+    button {
+        height: 30px;
+        font-size: 12px;
+    }
+}
