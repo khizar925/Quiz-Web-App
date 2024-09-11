@@ -1,15 +1,18 @@
-import {quizData} from './data.js';
-    let count = 0;
-    let score = 0;
+import { quizData } from "./data.js";
+let count = 0;
+let score = 0;
 
-    const questionEl = document.querySelector('.question');
-    const options = document.querySelector('.options');
-    const submitBtn = document.getElementById('submit-btn');
+const questionEl = document.querySelector(".question");
+const options = document.querySelector(".options");
+const submitBtn = document.getElementById("submit-btn");
+const addNewQuestionBtn = document.getElementById("addNewQuestionBtn");
 
-    function loadNewQuestion() {
-      if (count < quizData.length) {
-        questionEl.innerHTML = `Question # ${count + 1}: ${quizData[count].question}`;
-        options.innerHTML = `
+function loadNewQuestion() {
+  if (count < quizData.length) {
+    questionEl.innerHTML = `Question # ${count + 1}: ${
+      quizData[count].question
+    }`;
+    options.innerHTML = `
           <ul>
             <li><input type="radio" id="a" name="answer" value="a">
               <label for="a">${quizData[count].a}</label>
@@ -24,37 +27,44 @@ import {quizData} from './data.js';
               <label for="d">${quizData[count].d}</label>
             </li>
           </ul>`;
-      } else {
-        questionEl.innerHTML = `Quiz finished! Your score is ${score} / ${quizData.length}`;
-        options.innerHTML = '';
-        submitBtn.style.display = 'none';
-      }
+  } else {
+    questionEl.innerHTML = `Quiz finished! Your score is ${score} / ${quizData.length}`;
+    options.innerHTML = "";
+    submitBtn.style.display = "none";
+  }
+}
+
+function getSelectedAnswer() {
+  const selectedOption = document.querySelector('input[name="answer"]:checked');
+  if (selectedOption) {
+    return selectedOption.value;
+  } else {
+    return null;
+  }
+}
+
+function submitAnswer() {
+  const selectedAnswer = getSelectedAnswer();
+  if (selectedAnswer) {
+    console.log(`Selected Answer: ${selectedAnswer}`);
+    if (selectedAnswer === quizData[count].correct) {
+      score++;
     }
-
-    function getSelectedAnswer() {
-      const selectedOption = document.querySelector('input[name="answer"]:checked');
-      if (selectedOption) {
-        return selectedOption.value;
-      } else {
-        return null;
-      }
-    }
-
-    function submitAnswer() {
-      const selectedAnswer = getSelectedAnswer();
-      if (selectedAnswer) {
-        console.log(`Selected Answer: ${selectedAnswer}`);
-        if (selectedAnswer === quizData[count].correct) {
-          score++;
-        }
-        count++;
-        loadNewQuestion();
-      } else {
-        console.log('No option selected.');
-        alert("Please select an option!");
-      }
-    }
-
-    submitBtn.addEventListener('click', submitAnswer);
-
+    count++;
     loadNewQuestion();
+  } else {
+    console.log("No option selected.");
+    alert("Please select an option!");
+  }
+}
+
+submitBtn.addEventListener("click", submitAnswer);
+addNewQuestionBtn.addEventListener("click", addNewQuestions);
+
+addNewQuestionBtn
+loadNewQuestion();
+
+
+function addNewQuestions() {
+  window.location.href = "newQuestion.html";
+}
