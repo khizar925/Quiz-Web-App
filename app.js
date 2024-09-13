@@ -5,7 +5,6 @@ let score = 0;
 const questionEl = document.querySelector(".question");
 const options = document.querySelector(".options");
 const submitBtn = document.getElementById("submit-btn");
-const addNewQuestionBtn = document.getElementById("addNewQuestionBtn");
 
 function loadNewQuestion() {
   if (count < quizData.length) {
@@ -59,12 +58,4 @@ function submitAnswer() {
 }
 
 submitBtn.addEventListener("click", submitAnswer);
-addNewQuestionBtn.addEventListener("click", addNewQuestions);
-
-addNewQuestionBtn
 loadNewQuestion();
-
-
-function addNewQuestions() {
-  window.location.href = "newQuestion.html";
-}
